@@ -54,6 +54,8 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
 	const { data: account } = useAbstraxionAccount();
 	const { client } = useAbstraxionSigningClient();
 
+	// console.log(account, client)
+
 	const profile = account.bech32Address;
 
 	useEffect(() => {

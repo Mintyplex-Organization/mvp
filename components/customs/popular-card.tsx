@@ -59,7 +59,7 @@ export function PopularCard({ asSmall, mxAuto, index }: PopularCardProps) {
         <Image
           alt={CardContent.title}
           src={CardContent.icon}
-          className="object-cover w-full group-hover:scale-105 transition-all duration-300 bg-mintyplex-primary max-h-[30rem] object-top"
+          className="object-cover w-full group-hover:scale-105 transition-all duration-300 max-h-[30rem] object-top"
         />
       </div>
       <div>

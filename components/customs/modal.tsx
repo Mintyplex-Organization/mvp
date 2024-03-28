@@ -60,6 +60,7 @@ export default function EditModal({ setEditModal }: ModalProps) {
                   height={120}
                   alt="Curator"
                   className="rounded-full border-[8px] border-mintyplex-dark"
+                  style={{ height: '120px', objectFit: 'cover', objectPosition: 'top' }}
                 />
               </div>
               <input

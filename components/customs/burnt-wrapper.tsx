@@ -11,7 +11,7 @@ export default function BurntWrapper({
   const mintyplexContractAddress = "xion1h6hrq6wlfrt53aafpt27uvvrmwqeqwrcuqdy4uzcdn4jqz2sqdcq8egzfu";
 
   return (
-    <AbstraxionProvider config={{ contracts: [seatContractAddress, mintyplexContractAddress] }}>
+    <AbstraxionProvider config={{ contracts: [mintyplexContractAddress] }}>
       {children}
     </AbstraxionProvider>
   );

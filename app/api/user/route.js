@@ -1,4 +1,4 @@
-import connectMongoDB from "~/lib/utils/utils";
+import { connectMongoDB } from "~/lib/utils/utils";
 import User from "../../../models/userModel";
 import { NextResponse } from "next/server";
 
@@ -24,3 +24,7 @@ export async function DELETE(request) {
   await User.deleteOne({ wallet_address });
   return NextResponse.json({ message: "User deleted" }, { status: 200 });
 }
+
+// Endpoint to get all users {showing the number of products they have added }
+
+// Endpoint to get a user's details {showing bio and products they have added }

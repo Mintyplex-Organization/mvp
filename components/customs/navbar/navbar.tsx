@@ -10,9 +10,18 @@ import MobileSidebar from "~/components/dashboardlayout/mobileSidebar";
 import Search from "~/components/ui/Search";
 import { Button } from "~/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "~/components/ui/dropdown-menu";
 import { Input } from "~/components/ui/input";
 import logoLg from "~/public/logo-lg.png";
 import logo from "~/public/logo.png";
+import { truncate } from "~/utils/truncate";
 import { TypographyH3 } from "~/utils/typography";
 
 export default function Navbar() {
@@ -85,15 +94,37 @@ export default function Navbar() {
           <div className="hidden md:block">
             <div className="hidden md:block">
               {account.bech32Address ? (
-                <div onClick={() => setShowAbstraxion(true)}>
-                  <Button
-                    variant="ghost"
-                    className="border border-mintyplex-border"
-                    size="icon"
-                  >
-                    {/* <p>{truncate(account.bech32Address)}</p> */}
-                    <HiUserCircle size={24} />
-                  </Button>
+                <div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className="w-fit px-4 py-5 gap-2 border border-mintyplex-border"
+                        size="icon"
+                      >
+                        <HiUserCircle size={24} />
+                        {truncate(account.bech32Address)}
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="mt-3 w-[144px] border-mintyplex-border bg-mintyplex-dark">
+                      <Link href="/dashboard">
+                        <DropdownMenuItem className="cursor-pointer">
+                          Dashboard
+                        </DropdownMenuItem>
+                      </Link>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem className="cursor-pointer">
+                        Profile
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        className="cursor-pointer hover:bg-red"
+                        onClick={() => setShowAbstraxion(true)}
+                      >
+                        Logout
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               ) : (
                 <button
@@ -122,8 +153,7 @@ export default function Navbar() {
       </nav>
       <div
         id="sidebar"
-        className={`fixed inset-y-0 left-0 bg-mintyplex-dark w-full z-50 transform transition-transform duration-300 ease-in-out ${
-          isSidebarOpen ? "" : "-translate-x-full"}`}
+        className={`fixed inset-y-0 left-0 bg-mintyplex-dark w-full z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? "" : "-translate-x-full"}`}
       >
         <div
           className="flex justify-end w-full mb-[50px] px-6 py-3 z-[11111]"

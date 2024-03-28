@@ -15,6 +15,8 @@ import { useAbstraxionAccount, useAbstraxionSigningClient } from "@burnt-labs/ab
 import { truncateXionAddress } from "~/lib/utils/utils";
 import { copyToClipboard } from "~/utils/copyToClipboard";
 import { useToast } from "../ui/use-toast";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import ReserveUsername from "../customs/ReserveUsername";
 
 
 
@@ -84,10 +86,17 @@ const Sidebar = () => {
           </p>
         </div>
       </div>
-      <Button className="bg-mintyplex-primary text-white flex justify-between items-center px-4 w-full py-6 rounded-[8px] font-semibold text-[16px]">
-        <p>Reserve Username</p>
-        <BsArrowUpRight />
-      </Button>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="!bg-mintyplex-primary text-white flex justify-between items-center px-4 w-full py-6 rounded-[8px] font-semibold text-[16px]">
+            <p>Reserve Username</p>
+            <BsArrowUpRight />
+          </Button>
+        </DialogTrigger>
+        <DialogContent>
+          <ReserveUsername />
+        </DialogContent>
+      </Dialog>
       <div className="flex flex-col justify-between w-full h-full">
         <div className="flex flex-col gap-2">
           {SidebarData.map((data, i) => (

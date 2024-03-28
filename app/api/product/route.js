@@ -1,4 +1,4 @@
-import connectMongoDB from "../../../lib/utils/utils";
+import { connectMongoDB } from "../../../lib/utils/utils";
 import Product from "../../../models/productModel";
 import { NextResponse } from "next/server";
 
@@ -15,6 +15,8 @@ export async function GET(request) {
   const product = await Product.findOne({ name });
   return NextResponse.json(product, { status: 200 });
 }
+
+// Endpoint for all products getting the required details {Name, Description, Image, Price, Discount, Cartegories, Tags}
 
 export async function DELETE(request) {
   const { name } = await request.json();
